@@ -8,7 +8,10 @@
  * @author Christophe Gosiau <christophe@tigron.be>
  * @author Gerry Demaret <gerry@tigron.be>
  */
-class Password_Ruleset_Hive2024 extends Password_Ruleset {
+
+namespace Password\Ruleset;
+
+class Hive2024 extends \Password\Ruleset {
 
 	/**
 	 * Create

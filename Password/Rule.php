@@ -8,7 +8,9 @@
  * @author Gerry Demaret <gerry@tigron.be>
  */
 
-abstract class Password_Rule {
+namespace Password;
+
+abstract class Rule {
 
 	/**
 	 * The password to validate
@@ -34,7 +36,7 @@ abstract class Password_Rule {
 	 */
 	public function __construct(int $password_strength) {
 		$this->password_strength = $password_strength;
-	}		
+	}
 
 	/**
 	 * Does the given password matches this rule

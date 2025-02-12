@@ -9,7 +9,10 @@
  * @author Christophe Gosiau <christophe@tigron.be>
  * @author Gerry Demaret <gerry@tigron.be>
  */
-class Password_Ruleset {
+
+namespace Password;
+
+class Ruleset {
 
 	/**
 	 * Rules

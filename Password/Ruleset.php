@@ -9,7 +9,10 @@
  * @author Christophe Gosiau <christophe@tigron.be>
  * @author Gerry Demaret <gerry@tigron.be>
  */
-class Password_Ruleset {
+
+namespace Password;
+
+class Ruleset {
 
 	/**
 	 * Rules
@@ -45,7 +48,7 @@ class Password_Ruleset {
 	 * @return void
 	 */
 	public function set_password(string $password): void {
-		$this->password = $password;	
+		$this->password = $password;
 	}
 
 	/**
@@ -64,5 +67,5 @@ class Password_Ruleset {
 			}
 		}
 		return $highest_strength;
-	}	
+	}
 }

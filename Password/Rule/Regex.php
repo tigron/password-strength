@@ -8,7 +8,9 @@
  * @author Gerry Demaret <gerry@tigron.be>
  */
 
-class Password_Rule_Regex extends Password_Rule {
+namespace Password\Rule;
+
+class Password_Rule_Regex extends \Password\Rule {
 
 	/**
 	 * Regexp

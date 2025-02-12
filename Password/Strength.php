@@ -8,7 +8,10 @@
  * @author Christophe Gosiau <christophe@tigron.be>
  * @author Gerry Demaret <gerry@tigron.be>
  */
-class Password_Strength {
+
+namespace Password;
+
+class Strength {
 
 	const NONE = 0; // No strength, rule did not match
 	const VULNERABLE = 1;
