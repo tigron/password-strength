@@ -34,7 +34,7 @@ abstract class Rule {
 	 * @param int $password_strength
 	 * @return void
 	 */
-	public function __construct(int $password_strength) {
+	public function __construct(?int $password_strength) {
 		$this->password_strength = $password_strength;
 	}
 

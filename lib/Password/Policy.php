@@ -12,7 +12,7 @@
 
 namespace Password;
 
-class Ruleset {
+class Policy {
 
 	/**
 	 * Rules
@@ -20,7 +20,7 @@ class Ruleset {
 	 * @access private
 	 * @var Password_Ruleset[] $password_rulesets
 	 */
-	private $password_rulesets = [];
+	private $rulesets = [];
 
 	/**
 	 * The password to verify
@@ -36,8 +36,8 @@ class Ruleset {
 	 * @access public
 	 * @param Password_Rule $password_rule
 	 */
-	public function add_password_ruleset(Password_Ruleset $password_ruleset): void {
-		$this->password_rulesets[] = $password_ruleset;
+	public function add_password_ruleset(\Password\Ruleset $ruleset): void {
+		$this->rulesets[] = $ruleset;
 	}
 
 	/**
@@ -59,12 +59,12 @@ class Ruleset {
 	 */
 	public function get_strength(): int {
 		$lowest_strength = Password_Strength::NONE;
-		foreach ($this->password_rulesets as $password_ruleset) {
-			$password_ruleset->set_password($this->password);
-			$ruleset_strength = $password_ruleset->get_strength();
+		foreach ($this->rulesets as $ruleset) {
+			$ruleset->set_password($this->password);
+			$ruleset_strength = $ruleset->get_strength();
 			if (
-				$lowest_strength === Password_Strength::NONE
-				&& $ruleset_strength !== Password_Strength::NONE
+				$lowest_strength === \Password\Strength::NONE
+				&& $ruleset_strength !== \Password\Strength::NONE
 			) {
 				$lowest_strength = $ruleset_strength;
 				continue;

@@ -9,6 +9,9 @@
             "email": "support@tigron.be"
         }
     ],
+    "require": {
+    	"bjeavons/zxcvbn-php": "^1.4"
+    },
     "autoload": {
         "psr-4": { "Password\\": "lib/Password/" }
     }
