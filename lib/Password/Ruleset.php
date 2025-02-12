@@ -36,8 +36,8 @@ class Ruleset {
 	 * @access public
 	 * @param Password_Rule $password_rule
 	 */
-	public function add_password_rule(Password_Rule $password_rule): void {
-		$this->password_rules[] = $password_rule;
+	public function add_rule(\Password\Rule $rule): void {
+		$this->password_rules[] = $rule;
 	}
 
 	/**
@@ -58,7 +58,7 @@ class Ruleset {
 	 * @return int $strength
 	 */
 	public function get_strength(): int {
-		$highest_strength = Password_Strength::NONE;
+		$highest_strength = \Password\Strength::NONE;
 		foreach ($this->password_rules as $password_rule) {
 			$password_rule->set_password($this->password);
 			$rule_strength = $password_rule->get_strength();

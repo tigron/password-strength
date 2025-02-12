@@ -10,7 +10,7 @@
 
 namespace Password\Rule;
 
-class Password_Rule_Regex extends \Password\Rule {
+class Regex extends \Password\Rule {
 
 	/**
 	 * Regexp
