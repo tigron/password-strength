@@ -1,0 +1,15 @@
+{
+    "name": "tigron/password-strength",
+    "description": "Validates a given password for its strength",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tigron BVBA",
+            "email": "support@tigron.be"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Password\\": "lib/Password/" }
+    }
+}
