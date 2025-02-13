@@ -24,6 +24,7 @@ class Tigron {
 
 		$rules = array_merge($rules, \Password\Preset\Hive2024::export());
 		$rules = array_merge($rules, \Password\Preset\Zxcvbn::export());
+		$rules = array_merge($rules, \Password\Preset\Entropy::export());
 
 		return $rules;
 	}
