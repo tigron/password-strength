@@ -65,43 +65,49 @@ The following conditions are implemented and can be used in any rule.
 	/**
 	 * Put a condition on the presence of an uppercase letter in the password
 	 */
-    new Condition\Uppercase(bool $requested_value)
+    new \Password\Condition\Uppercase(bool $requested_value)
 
 	/**
 	 * Put a condition on the presence of an lowercase letter in the password
 	 */
-    new Condition\Lowercase(bool $requested_value)
+    new \Password\Condition\Lowercase(bool $requested_value)
 
 	/**
 	 * Put a condition on the presence of a number
 	 */
-    new Condition\Number(bool $requested_value)
+    new \Password\Condition\Number(bool $requested_value)
 
 	/**
 	 * Put a condition on the presence of a symbol
 	 */
-    new Condition\Symbol(bool $requested_value)
+    new \Password\Condition\Symbol(bool $requested_value)
 
 	/**
 	 * Put a condition on minimum length of the password
 	 */
-    new Condition\Length\Min(int $length)
+    new \Password\Condition\Length\Min(int $length)
 
 	/**
 	 * Put a condition on maximum length of the password
 	 */
-    new Condition\Length\Max(int $length)
+    new \Password\Condition\Length\Max(int $length)
 
 	/**
 	 * Put a condition on the amount of occurences in haveibeenpwned.com
 	 */
-    new Condition\Pwned(?int $occurences)
+    new \Password\Condition\Pwned(?int $occurences)
 
 	/**
 	 * Put a condition on the score of Zxcvbn
 	 * https://lowe.github.io/tryzxcvbn/
 	 */
-    new Condition\Zxcvbn(int $score)
+    new \Password\Condition\Zxcvbn(int $score)
+
+	/**
+	 * Put a condition on the score of the entropy calculation
+	 * https://gitlab.com/garybell/password-validation/
+	 */
+    new \Password\Condition\Entropy(int $score)
 
 
 ## Preset
