@@ -10,23 +10,23 @@
 
 namespace Password;
 
-abstract class Rule {
-
-	/**
-	 * The password to validate
-	 *
-	 * @var string $password
-	 * @access private
-	 */
-	protected ?string $password = null;
+class Rule {
 
 	/**
 	 * Password Strength
 	 *
 	 * @access private
-	 * @var int $password_strength
+	 * @var int $strength
 	 */
-	private ?int $password_strength = null;
+	private ?int $strength = null;
+
+	/**
+	 * Conditions
+	 *
+	 * @access private
+	 * @var array $conditions
+	 */
+	private array $conditions = [];
 
 	/**
 	 * Constructor
@@ -34,8 +34,7 @@ abstract class Rule {
 	 * @param int $password_strength
 	 * @return void
 	 */
-	public function __construct(?int $password_strength) {
-		$this->password_strength = $password_strength;
+	public function __construct() {
 	}
 
 	/**
@@ -45,7 +44,35 @@ abstract class Rule {
 	 * @param string $password
 	 * @return bool $matches
 	 */
-	abstract public function rule_matches(): bool;
+	public function matches($password): bool {
+		foreach ($this->conditions as $condition) {
+			if (!$condition->matches($password)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Add condition
+	 *
+	 * @access public
+	 * @param \Password\Condition $condition
+	 * @return void
+	 */
+	public function add_condition(\Password\Condition $condition): void {
+		$this->conditions[] = $condition;
+	}
+
+	/**
+	 * Set strength
+	 *
+	 * @access public
+	 * @param int $strength
+	 */
+	public function set_strength(int $strength): void {
+		$this->strength = $strength;
+	}
 
 	/**
 	 * Get strength
@@ -54,20 +81,7 @@ abstract class Rule {
 	 * @return int $strength
 	 */
 	public function get_strength(): int {
-		if ($this->rule_matches()) {
-			return $this->password_strength;
-		}
-		return Password_Strength::NONE;
-	}
-
-	/**
-	 * Set password
-	 *
-	 * @access public
-	 * @param string $password
-	 */
-	public function set_password($password): void {
-		$this->password = $password;
+		return $this->strength;
 	}
 
 }

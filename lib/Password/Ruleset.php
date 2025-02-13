@@ -41,6 +41,18 @@ class Ruleset {
 	}
 
 	/**
+	 * Import rules
+	 *
+	 * @access public
+	 * @param array $password_rules
+	 */
+	public function import_rules(array $password_rules = []): void {
+		foreach ($password_rules as $password_rule) {
+			$this->add_rule($password_rule);
+		}
+	}
+
+	/**
 	 * Set password
 	 *
 	 * @access public
@@ -58,14 +70,29 @@ class Ruleset {
 	 * @return int $strength
 	 */
 	public function get_strength(): int {
-		$highest_strength = \Password\Strength::NONE;
+		$strength = null;
+		$rule = null;
 		foreach ($this->password_rules as $password_rule) {
-			$password_rule->set_password($this->password);
+			if (!$password_rule->matches($this->password)) {
+				continue;
+			}
 			$rule_strength = $password_rule->get_strength();
-			if ($rule_strength > $highest_strength) {
-				$highest_strength = $rule_strength;
+
+			if ($strength === null) {
+				$strength = $rule_strength;
+				$rule = $password_rule;
+				continue;
+			}
+
+			if ($rule_strength < $strength) {
+				$strength = $rule_strength;
+				$rule = $password_rule;
 			}
 		}
-		return $highest_strength;
+		if ($strength === null) {
+			return \Password\Strength::NONE;
+		}
+
+		return $strength;
 	}
 }
